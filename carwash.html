@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مغسلة وتلميع الشمال</title>
+  <style>
+    :root{
+      --accent:#0a74ff;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --success:#16a34a;
+      font-family: "Segoe UI", Tahoma, system-ui, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a;line-height:1.45}
+    .container{max-width:980px;margin:28px auto;padding:20px}
+
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:150px;height:auto;flex:0 0 150px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e6eefc,#ffffff);box-shadow:0 6px 18px rgba(12,24,48,0.06)}
+    .logo img{width:100%;height:auto;object-fit:contain}
+    h1{font-size:20px;margin:0}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;}.logo{width:120px;height:auto}}
+
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(12,24,48,0.06)}
+    .hours{display:flex;flex-direction:column;gap:6px}
+    .row{display:flex;justify-content:space-between;align-items:center}
+    .badge{font-size:12px;padding:6px 8px;border-radius:8px;background:#f1f5f9;color:var(--muted)}
+
+    .services{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .service{background:#f8fafc;padding:10px 12px;border-radius:10px;font-size:14px;display:flex;gap:8px;align-items:center}
+
+    .contact-actions{display:flex;gap:10px;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:0;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-wph{background:#25D366;color:white}
+    .muted{color:var(--muted);font-size:13px}
+
+    form{display:flex;flex-direction:column;gap:10px}
+    label{font-size:13px;color:var(--muted)}
+    input[type=text],input[type=tel],textarea{padding:10px;border-radius:10px;border:1px solid #e6eef6;font-size:14px}
+
+    .rating{display:flex;align-items:center;gap:6px}
+    .star{font-size:22px;cursor:pointer;user-select:none}
+    .rating-value{font-weight:700}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="لقطة شاشة_29-10-2025_172939_.jpeg" alt="شعار مغسلة وتلميع الشمال" />
+      </div>
+      <div>
+        <h1>مغسلة وتلميع الشمال</h1>
+        <div class="subtitle">غسيل وتلميع السيارات — خدمات زينة وتلميع أنوار</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <section class="card">
+          <h3 style="margin:0 0 8px 0">معلومات عامة</h3>
+          <div class="row">
+            <div class="muted">أوقات العمل</div>
+            <div class="badge">من 9:00 ص — إلى 12:00 ص</div>
+          </div>
+          <div class="hours" style="margin-top:8px">
+            <div class="row"><div class="muted">الجمعة</div><div class="badge">1:00 م — 12:00 ص</div></div>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f1f5f9" />
+
+          <div class="muted">الخدمات المتاحة</div>
+          <div class="services">
+            <div class="service">✅ غسيل خارجي</div>
+            <div class="service">✅ غسيل داخلي</div>
+            <div class="service">✅ تلميع</div>
+            <div class="service">✅ خدمات زينة سيارات</div>
+            <div class="service">✅ تلميع أنوار</div>
+          </div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f1f5f9" />
+
+          <div class="muted">خدمة تقييم المغسلة</div>
+          <div class="rating" style="margin-top:8px">
+            <div id="stars">
+              <span class="star" data-value="1">☆</span>
+              <span class="star" data-value="2">☆</span>
+              <span class="star" data-value="3">☆</span>
+              <span class="star" data-value="4">☆</span>
+              <span class="star" data-value="5">☆</span>
+            </div>
+            <div class="rating-value" id="ratingValue">0</div>
+            <div class="muted" style="font-size:12px">/5</div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h3 style="margin:0 0 8px 0">تواصل معنا</h3>
+          <p class="muted">أرسل اسمك ورقم جوالك وسنرد عليك عبر الواتساب.</p>
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div>
+              <label>الاسم</label>
+              <input type="text" id="name" placeholder="الاسم الكامل" required />
+            </div>
+            <div>
+              <label>رقم الجوال</label>
+              <input type="tel" id="phone" placeholder="05xxxxxxxx" pattern="[0-9+ ]+" required />
+            </div>
+            <div>
+              <label>ملاحظات (اختياري)</label>
+              <textarea id="notes" rows="3" placeholder="مثلاً: نوع الخدمة أو ملاحظات عن السيارة"></textarea>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:6px;">
+              <button class="btn btn-primary" type="submit">إرسال</button>
+              <a class="btn btn-wph" href="https://wa.me/966554077845" target="_blank" rel="noopener">واتساب للتواصل</a>
+            </div>
+            <div id="formMsg" class="muted" style="margin-top:8px"></div>
+          </form>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4 style="margin:0 0 8px 0">معلومات سريعة</h4>
+          <div class="muted">رقم واتساب للتواصل</div>
+          <div style="font-weight:700;margin-top:6px">0554077845</div>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f1f5f9" />
+
+          <div class="muted">الميزات</div>
+          <ul style="padding-left:18px;margin:8px 0 0 0;color:var(--muted)">
+            <li>جمع الاسم ورقم الجوال من العميل</li>
+            <li>لا يوجد حجز مواعيد عبر الموقع</li>
+            <li>تقييم سريع للمغسلة</li>
+          </ul>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f1f5f9" />
+
+          <div class="muted">ساعات العمل</div>
+          <div style="margin-top:6px">9:00 ص — 12:00 ص (يوميًا)<br/>الجمعة: 1:00 م — 12:00 ص</div>
+        </div>
+
+        <div class="card" style="margin-top:12px;text-align:center">
+          <div class="muted">زر تواصل سريع</div>
+          <a class="btn btn-wph" href="https://wa.me/966554077845" target="_blank" rel="noopener" style="margin-top:8px;display:inline-flex">فتح محادثة واتساب</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      المصمم: واجهة مغسلة وتلميع الشمال — ضع الشعار (لقطة شاشة_29-10-2025_172939_.jpeg) في نفس المجلد ثم افتح index.html
+    </footer>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const ratingValue = document.getElementById('ratingValue');
+    let currentRating = 0;
+    stars.forEach(s => {
+      s.addEventListener('click', () => {
+        currentRating = Number(s.dataset.value);
+        updateStars();
+      });
+      s.addEventListener('mouseover', () => highlight(Number(s.dataset.value)));
+      s.addEventListener('mouseout', () => updateStars());
+    });
+    function highlight(val){
+      stars.forEach(st=> st.textContent = Number(st.dataset.value) <= val ? '★' : '☆');
+    }
+    function updateStars(){
+      stars.forEach(st=> st.textContent = Number(st.dataset.value) <= currentRating ? '★' : '☆');
+      ratingValue.textContent = currentRating;
+    }
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const notes = document.getElementById('notes').value.trim();
+      const msgEl = document.getElementById('formMsg');
+      if(!name || !phone){ msgEl.textContent = 'يرجى إدخال الاسم ورقم الجوال.'; return }
+      msgEl.style.color = 'var(--success)';
+      msgEl.textContent = 'تم استلام البيانات. سنتواصل معك عبر الواتساب.';
+      const waNumber = '966554077845';
+      const text = encodeURIComponent(`مرحباً، اسمي: ${name} - جوال: ${phone} - ملاحظة: ${notes}`);
+      window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
